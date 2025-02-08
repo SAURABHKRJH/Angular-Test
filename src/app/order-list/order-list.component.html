@@ -1,0 +1,84 @@
+<div class="container">
+  <!-- Orders Table -->
+  <div class="orders">
+    <h3>Orders</h3>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button *ngFor="let status of orderStatuses" 
+              [class.active]="activeTab === status.key" 
+              (click)="setTab(status.key)">
+        {{ status.label }} ({{ getOrdersCount(status.key) }})
+      </button>
+    </div>
+
+    <!-- Orders Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Order Name</th>
+          <th>Status</th>
+          <th>Task Name</th>
+          <th>Order Creation Date</th>
+          <th>Process Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of filteredOrders">
+          <td>{{ order.orderId }}</td>
+          <td>{{ order.orderName }}</td>
+          <td>{{ order.status }}</td>
+          <td>{{ order.taskName }}</td>
+          <td>{{ order.orderCreationDate }}</td>
+          <td>{{ order.processName }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Order Status Summary -->
+  <div class="status-summary">
+    <h3>Order Status Summary</h3>
+
+    <div class="summary-container">
+      <!-- Circular Progress -->
+      <div class="circle-container">
+        <svg width="200" height="200" viewBox="0 0 100 100">
+          <!-- Background Circle -->
+          <circle cx="50" cy="50" r="45" stroke="#ddd" stroke-width="8" fill="none"></circle>
+
+          <!-- Dynamic Progress Sections -->
+          <ng-container *ngFor="let status of orderStatuses; let i = index">
+            <circle
+              cx="50"
+              cy="50"
+              r="45"
+              [attr.stroke]="status.color"
+              stroke-width="8"
+              fill="none"
+              stroke-linecap="round"
+              [style.strokeDasharray]="getCircleProgress(status.key) + ', 283'"
+              [attr.stroke-dashoffset]="getOffset(i)"
+            ></circle>
+          </ng-container>
+        </svg>
+
+        <!-- Perfectly Centered Text -->
+        <div class="circle-text">
+          <div>Total</div>
+          <div class="count">{{ totalOrders }}</div>
+          <div>Orders</div>
+        </div>
+      </div>
+
+      <!-- Legend -->
+      <div class="legend">
+        <div *ngFor="let status of orderStatuses" class="legend-item">
+          <span class="color-box" [style.background]="status.color"></span>
+          {{ status.label }} ({{ getOrdersCount(status.key) }})
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
