@@ -1,29 +1,61 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="text-center">
-                    <h1>Login</h1>
-                    <h1>Please Enter email and password</h1>
-                </div>
-                
-                    <form [formGroup]="loginForm" (ngSubmit)="login()">
-                        <div class="mb-3">
-                          <label for="exampleInputEmail1" class="form-label">Email address</label>
-                          <input formControlName="emailid" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                        </div>
-                        <div class="mb-3">
-                          <label for="exampleInputPassword1" class="form-label">Password</label>
-                          <input formControlName="password"  type="password" class="form-control" id="exampleInputPassword1">
-                        </div>
-                     
-                        <button type="submit" class="btn btn-primary">Login</button>
-                        <a routerLink="/create-employee">Sign Up</a>
-                      </form>
-          
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <!-- Card Wrapper -->
+      <div class="card shadow-lg border-0">
+        <div class="card-body">
+          <!-- Header Section -->
+          <div class="text-center mb-4">
+            <h1 class="card-title text-primary fw-bold">Login</h1>
+            <p class="text-muted">Please enter your email and password to continue</p>
+          </div>
+
+          <!-- Login Form -->
+          <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <!-- Email Field -->
+            <div class="mb-3">
+              <label for="email" class="form-label fw-semibold">Email Address</label>
+              <input 
+                formControlName="emailid" 
+                type="email" 
+                class="form-control" 
+                id="email" 
+                placeholder="Enter your email" 
+                aria-describedby="emailHelp" 
+                required
+              />
+              <div id="emailHelp" class="form-text text-muted">
+                We'll never share your email with anyone else.
+              </div>
             </div>
+
+            <!-- Password Field -->
+            <div class="mb-3">
+              <label for="password" class="form-label fw-semibold">Password</label>
+              <input 
+                formControlName="password" 
+                type="password" 
+                class="form-control" 
+                id="password" 
+                placeholder="Enter your password" 
+                required
+              />
+            </div>
+
+            <!-- Login Button -->
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary btn-block fw-bold">Login</button>
+            </div>
+
+            <!-- Signup Link -->
+            <div class="text-center mt-3">
+              <a routerLink="/create-employee" class="text-primary fw-semibold">
+                Don't have an account? Sign Up
+              </a>
+            </div>
+          </form>
         </div>
+      </div>
     </div>
-    
-    </div>
+  </div>
+</div>

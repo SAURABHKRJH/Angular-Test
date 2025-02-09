@@ -1,0 +1,52 @@
+<div class="page-wrapper">
+  <!-- Header Section -->
+  <div class="header">
+    <span class="header-title">Order Creation</span>
+    <button class="close-button" (click)="closePage()">✖ Close</button>
+  </div>
+
+  <!-- Main Content Container -->
+  <div class="container">
+    <!-- Order Creation Title -->
+    <h2 class="section-title">Order Creation</h2>
+
+    <!-- Process Name Dropdown -->
+    <div class="form-row">
+      <label for="processName">Process Name</label>
+      <select id="processName" [(ngModel)]="formData.processName" name="processName" required>
+        <option value="IPDataSiteSurvey">IPDataSiteSurvey</option>
+        <option value="OtherProcess">Other Process</option>
+      </select>
+    </div>
+
+    <!-- Collapsible Order Details Section -->
+    <div class="order-details-container">
+      <div class="order-details-header" (click)="toggleOrderDetails()">
+        <span>Order Details</span>
+        <span class="arrow">{{ isOrderDetailsVisible ? '▲' : '▼' }}</span>
+      </div>
+
+      <div class="order-details-form" *ngIf="isOrderDetailsVisible">
+        <!-- Three Fields in One Row -->
+        <div class="form-row">
+          <div class="form-field">
+            <label for="orderId">Order ID *</label>
+            <input type="text" id="orderId" [(ngModel)]="formData.orderId" name="orderId" required />
+          </div>
+          <div class="form-field">
+            <label for="orderName">Order Name *</label>
+            <input type="text" id="orderName" [(ngModel)]="formData.orderName" name="orderName" required />
+          </div>
+          <div class="form-field">
+            <label for="product">Product *</label>
+            <select id="product" [(ngModel)]="formData.product" name="product" required>
+              <option value="" disabled>-- Please select --</option>
+              <option value="Product1">Product 1</option>
+              <option value="Product2">Product 2</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
