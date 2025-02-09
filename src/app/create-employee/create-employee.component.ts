@@ -26,6 +26,13 @@ email: any;
       console.log("Password:", this.password);
   
       alert("Sign Up Successful! Check console for details.");
+      const userData = {
+        name: this.name,
+        email: this.email,
+        password: this.password
+      };
+      console.log("User Data (JSON):", JSON.stringify(userData));
+
       localStorage.setItem('token', 'abc');
       this.router.navigate(['/main-page']);
 

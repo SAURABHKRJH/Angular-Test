@@ -24,6 +24,11 @@ export class LoginComponent implements OnInit {
     // Statically setting login success
     const mockEmail = 'test@example.com';
     const mockPassword = 'password123';
+    const userData = {
+      email: this.loginForm.value.emailid,
+      password: this.loginForm.value.password
+    };
+    console.log("User Login (JSON):", JSON.stringify(userData));
     // this.router.navigate(['main-page']);
     if (
       this.loginForm.value.emailid === mockEmail &&

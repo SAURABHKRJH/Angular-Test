@@ -82,5 +82,7 @@ export class OrderListComponent implements OnInit {
 
   ngOnInit(): void {
     this.filterOrders(); // Initialize displayedOrders when the component loads
+    console.log("Orders Data:", this.displayedOrders);
+
   }
 }
