@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { CreateEmployeeComponent } from './create-employee/create-employee.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { OrderCreationComponent } from './order-creation/order-creation.component';
+import { AuthGuard } from './auth/auth-guard';
 
 const routes: Routes = [
   // {path:'order',component:OrderListComponent},
@@ -13,10 +14,10 @@ const routes: Routes = [
   {path: 'create-order', component: OrderCreationComponent},
   // {path: 'main-page', component: MainPageComponent},
   {
-    path: 'main-page',
+    path: 'main-page',canActivate:[AuthGuard],
     component: MainPageComponent,
     children: [
-      { path: 'order', component: OrderListComponent } // 👈 Nested child route
+      { path: 'order',canActivate:[AuthGuard], component: OrderListComponent } // 👈 Nested child route
     ]
   },
   {path:'',redirectTo:'login',pathMatch:'full'}

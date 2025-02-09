@@ -53,8 +53,18 @@
     <div class="d-flex align-items-center">
       <button class="btn btn-light btn-sm me-2">📊 Reports</button>
       <button class="btn btn-outline-light btn-sm me-2">📋 Queue</button>
-      <div class="profile-icon text-white rounded-circle bg-secondary p-2">MD</div>
-    </div>
+      <div class="dropdown">
+        <div class="profile-icon text-white rounded-circle bg-secondary p-2" 
+             id="profileDropdown" 
+             data-bs-toggle="dropdown" 
+             aria-expanded="false" 
+             style="cursor: pointer;">
+          MD
+        </div>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+          <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+        </ul>
+      </div>    </div>
   </div>
 </nav>
 

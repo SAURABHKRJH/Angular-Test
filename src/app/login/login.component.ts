@@ -24,17 +24,18 @@ export class LoginComponent implements OnInit {
     // Statically setting login success
     const mockEmail = 'test@example.com';
     const mockPassword = 'password123';
-    this.router.navigate(['main-page']);
-    // if (
-    //   this.loginForm.value.emailid === mockEmail &&
-    //   this.loginForm.value.password === mockPassword
-    // ) {
-    //   alert('Login Success');
-    //   localStorage.setItem('token', 'abc');
-    //   this.loginForm.reset();
-    //   this.router.navigate(['main-page']);
-    // } else {
-    //   alert('User not found');
-    // }
+    // this.router.navigate(['main-page']);
+    if (
+      this.loginForm.value.emailid === mockEmail &&
+      this.loginForm.value.password === mockPassword
+    ) {
+      alert('Login Success');
+      localStorage.setItem('token', 'abc');
+      this.loginForm.reset();
+      this.router.navigate(['main-page']);
+    } else {
+      alert('User not found');
+      localStorage.removeItem('token')
+    }
   }
 }

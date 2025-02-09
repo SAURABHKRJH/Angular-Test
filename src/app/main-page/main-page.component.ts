@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-page',
@@ -7,5 +8,18 @@ import { Component } from '@angular/core';
   styleUrl: './main-page.component.css'
 })
 export class MainPageComponent {
+  constructor(private router :Router){}
+
+  logout()
+  {
+    console.log("logoutt")
+    console.log(localStorage.getItem('token'))
+    this.goToEmployeeList();
+    localStorage.removeItem('token')
+
+  }
+  goToEmployeeList(){
+    this.router.navigate(['/login']);
+  }
 
 }
