@@ -28,4 +28,7 @@ export class OrderCreationComponent {
   toggleOrderDetails() {
     this.isOrderDetailsVisible = !this.isOrderDetailsVisible;
   }
+  submitForm() {
+    console.log('Form Data:', JSON.stringify(this.formData, null, 2));
+  }
 }
